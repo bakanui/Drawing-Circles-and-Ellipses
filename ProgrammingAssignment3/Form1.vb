@@ -1,10 +1,6 @@
 ﻿Public Class Form1
     Dim canvas As Bitmap
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-
-    End Sub
-
     Sub clearCanvas()
         For i = 0 To PictureBox1.Width - 1
             For j = 0 To PictureBox1.Height - 1
@@ -46,6 +42,9 @@
         PictureBox1.Image = canvas
     End Sub
 
+    ''' <summary>
+    ''' lets fix ellipse later
+    ''' </summary>
     Sub createEllipse(xc As Integer, yc As Integer, a As Integer, b As Integer)
         Dim x = 0
         Dim y = b
@@ -94,7 +93,16 @@
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         canvas = New Bitmap(PictureBox1.Width, PictureBox1.Height)
         clearCanvas()
-        createCircle(100, 100, 20)
-        createEllipse(50, 50, 75, 25)
+    End Sub
+
+    Private Sub CircleButton_Click(sender As Object, e As EventArgs) Handles circleButton.Click
+        Dim xc As Integer = xc_Box.Text
+        Dim yc As Integer = yc_Box.Text
+        Dim r As Integer = r_Box.Text
+        createCircle(xc, yc, r)
+    End Sub
+
+    Private Sub clearCanvas_button_Click(sender As Object, e As EventArgs) Handles clearCanvas_button.Click
+        clearCanvas()
     End Sub
 End Class
