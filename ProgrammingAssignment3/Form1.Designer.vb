@@ -24,6 +24,13 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.EllipseButton = New System.Windows.Forms.Button()
+        Me.b_box = New System.Windows.Forms.TextBox()
+        Me.a_box = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.xc_Box = New System.Windows.Forms.TextBox()
@@ -31,8 +38,6 @@ Partial Class Form1
         Me.r_Box = New System.Windows.Forms.TextBox()
         Me.CircleButton = New System.Windows.Forms.Button()
         Me.clearCanvas_button = New System.Windows.Forms.Button()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -47,6 +52,11 @@ Partial Class Form1
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.EllipseButton)
+        Me.GroupBox1.Controls.Add(Me.b_box)
+        Me.GroupBox1.Controls.Add(Me.a_box)
+        Me.GroupBox1.Controls.Add(Me.Label6)
+        Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -60,7 +70,66 @@ Partial Class Form1
         Me.GroupBox1.Size = New System.Drawing.Size(200, 166)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Circle"
+        Me.GroupBox1.Text = "Circle and Ellipse"
+        '
+        'EllipseButton
+        '
+        Me.EllipseButton.Location = New System.Drawing.Point(119, 137)
+        Me.EllipseButton.Name = "EllipseButton"
+        Me.EllipseButton.Size = New System.Drawing.Size(75, 23)
+        Me.EllipseButton.TabIndex = 14
+        Me.EllipseButton.Text = "Ellipse"
+        Me.EllipseButton.UseVisualStyleBackColor = True
+        '
+        'b_box
+        '
+        Me.b_box.Location = New System.Drawing.Point(112, 61)
+        Me.b_box.Name = "b_box"
+        Me.b_box.Size = New System.Drawing.Size(39, 20)
+        Me.b_box.TabIndex = 13
+        '
+        'a_box
+        '
+        Me.a_box.Location = New System.Drawing.Point(112, 35)
+        Me.a_box.Name = "a_box"
+        Me.a_box.Size = New System.Drawing.Size(39, 20)
+        Me.a_box.TabIndex = 12
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(95, 64)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(13, 13)
+        Me.Label6.TabIndex = 11
+        Me.Label6.Text = "b"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(95, 38)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(13, 13)
+        Me.Label5.TabIndex = 10
+        Me.Label5.Text = "a"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(49, 95)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(40, 13)
+        Me.Label4.TabIndex = 9
+        Me.Label4.Text = "Radius"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(32, 64)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(12, 13)
+        Me.Label3.TabIndex = 8
+        Me.Label3.Text = "y"
         '
         'Label2
         '
@@ -84,14 +153,14 @@ Partial Class Form1
         '
         Me.xc_Box.Location = New System.Drawing.Point(50, 35)
         Me.xc_Box.Name = "xc_Box"
-        Me.xc_Box.Size = New System.Drawing.Size(100, 20)
+        Me.xc_Box.Size = New System.Drawing.Size(39, 20)
         Me.xc_Box.TabIndex = 5
         '
         'yc_Box
         '
         Me.yc_Box.Location = New System.Drawing.Point(50, 61)
         Me.yc_Box.Name = "yc_Box"
-        Me.yc_Box.Size = New System.Drawing.Size(100, 20)
+        Me.yc_Box.Size = New System.Drawing.Size(39, 20)
         Me.yc_Box.TabIndex = 4
         '
         'r_Box
@@ -103,11 +172,11 @@ Partial Class Form1
         '
         'CircleButton
         '
-        Me.CircleButton.Location = New System.Drawing.Point(63, 137)
+        Me.CircleButton.Location = New System.Drawing.Point(6, 137)
         Me.CircleButton.Name = "CircleButton"
         Me.CircleButton.Size = New System.Drawing.Size(75, 23)
         Me.CircleButton.TabIndex = 2
-        Me.CircleButton.Text = "Generate"
+        Me.CircleButton.Text = "Circle"
         Me.CircleButton.UseVisualStyleBackColor = True
         '
         'clearCanvas_button
@@ -118,24 +187,6 @@ Partial Class Form1
         Me.clearCanvas_button.TabIndex = 0
         Me.clearCanvas_button.Text = "Clear Canvas"
         Me.clearCanvas_button.UseVisualStyleBackColor = True
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(32, 64)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(12, 13)
-        Me.Label3.TabIndex = 8
-        Me.Label3.Text = "y"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(49, 95)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(40, 13)
-        Me.Label4.TabIndex = 9
-        Me.Label4.Text = "Radius"
         '
         'Form1
         '
@@ -165,4 +216,9 @@ Partial Class Form1
     Friend WithEvents Label2 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents b_box As System.Windows.Forms.TextBox
+    Friend WithEvents a_box As System.Windows.Forms.TextBox
+    Friend WithEvents EllipseButton As System.Windows.Forms.Button
 End Class
