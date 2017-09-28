@@ -1,5 +1,7 @@
 ﻿Public Class Form1
     Dim canvas As Bitmap
+    Dim circle(99, 99, 99) As Integer
+    Dim circleIdentifier As Integer
 
     Sub clearCanvas()
         For i = 0 To PictureBox1.Width - 1
@@ -10,10 +12,7 @@
         PictureBox1.Image = canvas
     End Sub
 
-    Sub createCircle(xc As Integer, yc As Integer, r As Integer)
-        Dim y = r
-        Dim x = 0
-        Dim d = 1 - r
+    Sub setCirclePixels(xc As Integer, yc As Integer, x As Integer, y As Integer)
         canvas.SetPixel(xc + x, yc + y, Color.Black)
         canvas.SetPixel(xc - x, yc + y, Color.Black)
         canvas.SetPixel(xc + x, yc - y, Color.Black)
@@ -22,6 +21,19 @@
         canvas.SetPixel(xc - y, yc + x, Color.Black)
         canvas.SetPixel(xc + y, yc - x, Color.Black)
         canvas.SetPixel(xc - y, yc - x, Color.Black)
+    End Sub
+
+    Sub createCircle(xc As Integer, yc As Integer, r As Integer)
+        Dim y = r
+        Dim x = 0
+        Dim d = 1 - r
+        Dim i = 0
+        Dim circlePixelPasses As Integer = 0
+        setCirclePixels(xc, yc, x, y)
+        circle(circleIdentifier, circlePixelPasses, i) = xc
+        circle(circleIdentifier, circlePixelPasses, i + 1) = yc
+        circle(circleIdentifier, circlePixelPasses, i + 1) = x
+        circle(circleIdentifier, circlePixelPasses, i + 1) = y
         While y >= x
             x = x + 1
             If d < 0 Then
@@ -30,21 +42,16 @@
                 y = y - 1
                 d = d + (2 * x) - (2 * y) + 5
             End If
-            canvas.SetPixel(xc + x, yc + y, Color.Black)
-            canvas.SetPixel(xc - x, yc + y, Color.Black)
-            canvas.SetPixel(xc + x, yc - y, Color.Black)
-            canvas.SetPixel(xc - x, yc - y, Color.Black)
-            canvas.SetPixel(xc + y, yc + x, Color.Black)
-            canvas.SetPixel(xc - y, yc + x, Color.Black)
-            canvas.SetPixel(xc + y, yc - x, Color.Black)
-            canvas.SetPixel(xc - y, yc - x, Color.Black)
+            setCirclePixels(xc, yc, x, y)
+            circle(circleIdentifier, circlePixelPasses + 1, i) = xc
+            circle(circleIdentifier, circlePixelPasses, i + 1) = yc
+            circle(circleIdentifier, circlePixelPasses, i + 1) = x
+            circle(circleIdentifier, circlePixelPasses, i + 1) = y
         End While
         PictureBox1.Image = canvas
+        circleIdentifier = circleIdentifier + 1
     End Sub
 
-    ''' <summary>
-    ''' lets fix ellipse later
-    ''' </summary>
     Sub createEllipse(xc As Integer, yc As Integer, a As Integer, b As Integer)
         Dim x = 0
         Dim y = b
@@ -108,5 +115,9 @@
         Dim a As Integer = a_box.Text
         Dim b As Integer = b_box.Text
         createEllipse(xc, yc, a, b)
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Array.Clear(circle, 0, 99)
     End Sub
 End Class
