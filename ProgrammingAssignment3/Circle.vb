@@ -5,6 +5,8 @@
     Public Property x As Integer
     Public Property y As Integer
 
+    Public color
+
     'How to init circle list?
     Dim circles As List(Of Circle)
     Public Shared circleID As Integer = 0
@@ -26,14 +28,14 @@
     End Sub
 
     Public Sub setCirclePixels(xc As Integer, yc As Integer, x As Integer, y As Integer)
-        MainWindow.canvas.SetPixel(xc + x, yc + y, Color.Black)
-        MainWindow.canvas.SetPixel(xc - x, yc + y, Color.Black)
-        MainWindow.canvas.SetPixel(xc + x, yc - y, Color.Black)
-        MainWindow.canvas.SetPixel(xc - x, yc - y, Color.Black)
-        MainWindow.canvas.SetPixel(xc + y, yc + x, Color.Black)
-        MainWindow.canvas.SetPixel(xc - y, yc + x, Color.Black)
-        MainWindow.canvas.SetPixel(xc + y, yc - x, Color.Black)
-        MainWindow.canvas.SetPixel(xc - y, yc - x, Color.Black)
+        MainWindow.canvas.SetPixel(xc + x, yc + y, color)
+        MainWindow.canvas.SetPixel(xc - x, yc + y, color)
+        MainWindow.canvas.SetPixel(xc + x, yc - y, color)
+        MainWindow.canvas.SetPixel(xc - x, yc - y, color)
+        MainWindow.canvas.SetPixel(xc + y, yc + x, color)
+        MainWindow.canvas.SetPixel(xc - y, yc + x, color)
+        MainWindow.canvas.SetPixel(xc + y, yc - x, color)
+        MainWindow.canvas.SetPixel(xc - y, yc - x, color)
     End Sub
 
     Sub storeCircle(xc As Integer, yc As Integer, x As Integer, y As Integer)

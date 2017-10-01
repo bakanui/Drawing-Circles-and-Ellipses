@@ -4,6 +4,7 @@
     Dim circle As Circle = New Circle(0, 0, 0, 0, 0, 0)
     Dim ellipse As Ellipse
     Dim misc As Miscellanous = New Miscellanous
+    Dim previewColor
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         canvas = New Bitmap(PictureBox1.Width, PictureBox1.Height)
@@ -35,4 +36,19 @@
 
     End Sub
 
+    Private Sub TMRGen_Tick(sender As Object, e As EventArgs) Handles TMRGen.Tick
+        REDCLR.Text = TBRed.Value
+        GREENCLR.Text = TBGreen.Value
+        BLUECLR.Text = TBBlue.Value
+        Dim red1, green1, blue1 As Integer
+        red1 = REDCLR.Text
+        green1 = GREENCLR.Text
+        blue1 = BLUECLR.Text
+        previewColor = Color.FromArgb(red1, green1, blue1)
+        PictureBox2.BackColor = previewColor
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        circle.color = previewColor
+    End Sub
 End Class
