@@ -1,23 +1,21 @@
 ﻿Public Class MainWindow
     Public canvas As Bitmap
     Dim circleIdentifier As Integer
-    Dim circle As Circle
+    Dim circle As Circle = New Circle(0, 0, 0, 0, 0, 0)
     Dim ellipse As Ellipse
     Dim misc As Miscellanous = New Miscellanous
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        circle.circleInit()
         canvas = New Bitmap(PictureBox1.Width, PictureBox1.Height)
         misc.clearCanvas()
     End Sub
 
     Private Sub CircleButton_Click(sender As Object, e As EventArgs) Handles CircleButton.Click
-        circle = New Circle
         Dim xc As Integer = xc_Box.Text
         Dim yc As Integer = yc_Box.Text
         Dim r As Integer = r_Box.Text
         circle.createCircle(xc, yc, r)
-
+        misc.listCircles()
     End Sub
 
     Private Sub clearCanvas_button_Click(sender As Object, e As EventArgs) Handles clearCanvas_button.Click

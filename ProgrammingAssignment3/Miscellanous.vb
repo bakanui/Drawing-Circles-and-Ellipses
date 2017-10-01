@@ -7,4 +7,11 @@
         Next
         MainWindow.PictureBox1.Image = MainWindow.canvas
     End Sub
+
+    Sub listCircles()
+        Dim i As Integer
+        For i = 0 To Circle.circleID - 1
+            MainWindow.ListBox1.Items.Add("Circle " + CStr(i))
+        Next
+    End Sub
 End Class

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class MainWindow
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class MainWindow
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -183,7 +183,7 @@ Partial Class MainWindow
         '
         'clearCanvas_button
         '
-        Me.clearCanvas_button.Location = New System.Drawing.Point(77, 204)
+        Me.clearCanvas_button.Location = New System.Drawing.Point(103, 193)
         Me.clearCanvas_button.Name = "clearCanvas_button"
         Me.clearCanvas_button.Size = New System.Drawing.Size(99, 23)
         Me.clearCanvas_button.TabIndex = 0
@@ -192,7 +192,7 @@ Partial Class MainWindow
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(98, 345)
+        Me.Button1.Location = New System.Drawing.Point(163, 345)
         Me.Button1.Margin = New System.Windows.Forms.Padding(2)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(56, 19)
@@ -203,7 +203,7 @@ Partial Class MainWindow
         'ListBox1
         '
         Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(60, 245)
+        Me.ListBox1.Location = New System.Drawing.Point(124, 245)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(120, 95)
         Me.ListBox1.TabIndex = 3
