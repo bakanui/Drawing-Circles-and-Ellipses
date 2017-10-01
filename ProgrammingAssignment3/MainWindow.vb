@@ -1,7 +1,7 @@
 ﻿Public Class MainWindow
     Public canvas As Bitmap
     Dim circleIdentifier As Integer
-    Dim circle As Circle = New Circle(0, 0, 0, 0, 0, 0)
+    Dim circle As Circle = New Circle()
     Dim ellipse As Ellipse
     Dim misc As Miscellanous = New Miscellanous
     Dim previewColor
@@ -33,7 +33,8 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-
+        circle.circleDelete(ListBox1.SelectedIndex)
+        ListBox1.Items.Remove(ListBox1.SelectedItem)
     End Sub
 
     Private Sub TMRGen_Tick(sender As Object, e As EventArgs) Handles TMRGen.Tick
@@ -46,9 +47,12 @@
         blue1 = BLUECLR.Text
         previewColor = Color.FromArgb(red1, green1, blue1)
         PictureBox2.BackColor = previewColor
+        circle.color = previewColor
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         circle.color = previewColor
+
     End Sub
+
 End Class

@@ -6,11 +6,13 @@
     Public Property y As Integer
 
     Public color
+    Public circles As List(Of Circle)
+    Public Shared Property circleID As Integer = 0
+    Public Property points As Integer = 0
 
-    'How to init circle list?
-    Dim circles As List(Of Circle)
-    Public Shared circleID As Integer = 0
-    Dim points As Integer = 0
+    Public Sub New()
+
+    End Sub
 
     Public Sub New(ByVal ID As Integer, ByVal point As Integer, pxc As Integer, ByVal pyc As Integer, ByVal px As Integer, ByVal py As Integer)
         circleID = ID
@@ -25,6 +27,12 @@
         circles = New List(Of Circle) From {
             New Circle(circleID, points, 0, 0, 0, 0)
         }
+    End Sub
+
+    Sub circleDelete(i As Integer)
+        circles.RemoveAll(Function(circle) Circle.circleID = i + 1)
+        'somehow needs to refill the screen with stored points
+        'could point canvasRefresh here
     End Sub
 
     Public Sub setCirclePixels(xc As Integer, yc As Integer, x As Integer, y As Integer)
@@ -47,9 +55,9 @@
         Dim x = 0
         Dim d = 1 - r
         Dim circlePixelPasses As Integer = 0
-        ' circleInit()
+        circleInit()
         setCirclePixels(xc, yc, x, y)
-        ' storeCircle(xc, yc, x, y)
+        storeCircle(xc, yc, x, y)
         points = points + 1
         While y >= x
             x = x + 1
@@ -60,7 +68,7 @@
                 d = d + (2 * x) - (2 * y) + 5
             End If
             setCirclePixels(xc, yc, x, y)
-            '   storeCircle(xc, yc, x, y)
+            storeCircle(xc, yc, x, y)
             points = points + 1
         End While
         MainWindow.PictureBox1.Image = MainWindow.canvas
