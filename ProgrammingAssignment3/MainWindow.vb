@@ -7,6 +7,7 @@
     Dim previewColor
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        circle.circleInit()
         canvas = New Bitmap(PictureBox1.Width, PictureBox1.Height)
         misc.clearCanvas()
     End Sub
@@ -16,7 +17,7 @@
         Dim yc As Integer = yc_Box.Text
         Dim r As Integer = r_Box.Text
         circle.createCircle(xc, yc, r)
-        misc.listCircles()
+        misc.listCircle()
     End Sub
 
     Private Sub clearCanvas_button_Click(sender As Object, e As EventArgs) Handles clearCanvas_button.Click

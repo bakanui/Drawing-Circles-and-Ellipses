@@ -9,20 +9,10 @@
         MainWindow.PictureBox1.Image = MainWindow.canvas
     End Sub
 
-    Sub listCircles()
+    Sub listCircle()
         MainWindow.ListBox1.Items.Clear()
-        Dim i As Integer
-        For i = 0 To Circle.circleID - 1
+        For i = 0 To Circle.idx - 1
             MainWindow.ListBox1.Items.Add("Circle " + CStr(i))
         Next
-    End Sub
-
-    Sub canvasRefresh()
-        For i = 0 To Circle.circleID - 1
-            For j = 0 To circle.points - 1
-                MainWindow.canvas.SetPixel(i, j, Color.Black)
-            Next
-        Next
-        MainWindow.PictureBox1.Image = MainWindow.canvas
     End Sub
 End Class
