@@ -59,6 +59,11 @@ Partial Class MainWindow
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.sfdI = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.sfdImage = New System.Windows.Forms.SaveFileDialog()
+        Me.ofdImage = New System.Windows.Forms.OpenFileDialog()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.TBRed, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -428,11 +433,49 @@ Partial Class MainWindow
         Me.ComboBox1.Size = New System.Drawing.Size(172, 24)
         Me.ComboBox1.TabIndex = 20
         '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(664, 356)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(109, 23)
+        Me.Button4.TabIndex = 21
+        Me.Button4.Text = "Load Picture"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'sfdI
+        '
+        Me.sfdI.Location = New System.Drawing.Point(664, 386)
+        Me.sfdI.Name = "sfdI"
+        Me.sfdI.Size = New System.Drawing.Size(109, 23)
+        Me.sfdI.TabIndex = 22
+        Me.sfdI.Text = "Save Picture"
+        Me.sfdI.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(698, 440)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(75, 23)
+        Me.Button6.TabIndex = 23
+        Me.Button6.Text = "Exit"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'sfdImage
+        '
+        Me.sfdImage.DefaultExt = "jpg"
+        '
+        'ofdImage
+        '
+        Me.ofdImage.FileName = "Image Name"
+        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1314, 475)
+        Me.Controls.Add(Me.Button6)
+        Me.Controls.Add(Me.sfdI)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Button3)
@@ -506,4 +549,9 @@ Partial Class MainWindow
     Friend WithEvents Button3 As Button
     Friend WithEvents Label9 As Label
     Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Button4 As Button
+    Friend WithEvents sfdI As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents sfdImage As SaveFileDialog
+    Friend WithEvents ofdImage As OpenFileDialog
 End Class
