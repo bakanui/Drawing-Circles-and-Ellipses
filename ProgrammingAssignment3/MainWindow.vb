@@ -5,13 +5,21 @@ Public Class MainWindow
     Dim circleIdentifier As Integer
     Dim circle As Circle = New Circle()
     Dim ellipse As Ellipse
-    Dim misc As Miscellanous = New Miscellanous
     Dim previewColor
+    Dim a As StreamReader
+    Dim b As String
+    Dim c As String = "C:\Saved\pwtest.txt"
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         circle.circleInit()
         canvas = New Bitmap(PictureBox1.Width, PictureBox1.Height)
-        misc.clearCanvas()
+        Miscellanous.clearCanvas()
+        If Not File.Exists(c) Then
+            Dim d As FileStream
+            d = File.Create(c)
+            d.Close()
+        End If
+        ReadFile()
     End Sub
 
     Private Sub CircleButton_Click(sender As Object, e As EventArgs) Handles CircleButton.Click
@@ -19,11 +27,11 @@ Public Class MainWindow
         Dim yc As Integer = yc_Box.Text
         Dim r As Integer = r_Box.Text
         circle.createCircle(xc, yc, r)
-        misc.listCircle()
+        Miscellanous.listCircle()
     End Sub
 
     Private Sub clearCanvas_button_Click(sender As Object, e As EventArgs) Handles clearCanvas_button.Click
-        misc.clearCanvas()
+        Miscellanous.clearCanvas()
     End Sub
 
     Private Sub EllipseButton_Click(sender As Object, e As EventArgs) Handles EllipseButton.Click
@@ -36,7 +44,7 @@ Public Class MainWindow
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        circle.circleDelete(ListBox1.SelectedIndex)
+        Circle.circleDelete(ListBox1.SelectedIndex)
         ListBox1.Items.Remove(ListBox1.SelectedItem)
     End Sub
 
@@ -50,29 +58,36 @@ Public Class MainWindow
         blue1 = BLUECLR.Text
         previewColor = Color.FromArgb(red1, green1, blue1)
         PictureBox2.BackColor = previewColor
-        circle.color = previewColor
+        Circle.color = previewColor
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        circle.color = previewColor
+        Circle.color = previewColor
 
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        ofdImage.ShowDialog()
-        If ofdImage.FileName > "" Then
-            PictureBox1.ImageLocation = ofdImage.FileName
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        If TextBox2.Text = Nothing Then
+            MsgBox("Enter a password to be saved")
+        Else
+            File.AppendAllText(c, TextBox2.Text & vbCrLf)
+            TextBox2.Text = ""
+            MsgBox("password saved", MsgBoxStyle.Information, "saved")
+            ReadFile()
         End If
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles sfdI.Click
-        sfdImage.ShowDialog()
-        If sfdImage.FileName > "" Then
-            PictureBox1.Image.Save(sfdImage.FileName)
-        End If
-    End Sub
-
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        End
+    Private Sub ReadFile()
+        Try
+            ComboBox1.Items.Clear()
+            a = File.OpenText(c)
+            While a.Peek <> -1
+                b = a.ReadLine()
+                ComboBox1.Items.Add(b)
+            End While
+            a.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class
