@@ -54,6 +54,11 @@ Partial Class MainWindow
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TMRGen = New System.Windows.Forms.Timer(Me.components)
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.TBRed, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -381,11 +386,58 @@ Partial Class MainWindow
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(361, 321)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(184, 17)
+        Me.Label8.TabIndex = 16
+        Me.Label8.Text = "Enter password to be saved"
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(364, 342)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(175, 22)
+        Me.TextBox2.TabIndex = 17
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(464, 370)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 18
+        Me.Button3.Text = "save"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(364, 400)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(112, 17)
+        Me.Label9.TabIndex = 19
+        Me.Label9.Text = "Saved password"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(367, 421)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(172, 24)
+        Me.ComboBox1.TabIndex = 20
+        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1314, 475)
+        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.PictureBox2)
@@ -449,4 +501,9 @@ Partial Class MainWindow
     Friend WithEvents Label7 As Label
     Friend WithEvents TMRGen As Timer
     Friend WithEvents Button2 As Button
+    Friend WithEvents Label8 As Label
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Label9 As Label
+    Friend WithEvents ComboBox1 As ComboBox
 End Class
