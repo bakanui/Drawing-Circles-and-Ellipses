@@ -49,7 +49,7 @@
             idx = idx - 1
             ReDim Preserve c(idx - 1)
             ReDim Preserve Elmt(N)
-            Miscellanous.refreshPoints(N)
+            Miscellanous.CirclerefreshPoints(N)
         End If
         'somehow needs to refill the screen with stored points
         'could point canvasRefresh here
