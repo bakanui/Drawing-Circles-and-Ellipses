@@ -43,7 +43,7 @@ Public Class MainWindow
         Miscellanous.list()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles CrclIndx.Click
         circle.circleDelete(ListBox1.SelectedIndex)
         ListBox1.Items.Remove(ListBox1.SelectedItem)
     End Sub
@@ -62,13 +62,13 @@ Public Class MainWindow
         ellipse.color = previewColor
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles PrvwBtn.Click
         circle.color = previewColor
         ellipse.color = previewColor
 
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles SveBtn.Click
         If TextBox2.Text = Nothing Then
             MsgBox("Enter a password to be saved")
         Else
@@ -93,8 +93,12 @@ Public Class MainWindow
         End Try
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles EllsIndx.Click
         ellipse.ellipseDelete(ListBox1.SelectedIndex)
         ListBox1.Items.Remove(ListBox1.SelectedItem)
+    End Sub
+
+    Private Sub PictureBox1_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles PictureBox1.MouseMove
+        Coordinate.Text = (e.X & ", " & e.Y)
     End Sub
 End Class

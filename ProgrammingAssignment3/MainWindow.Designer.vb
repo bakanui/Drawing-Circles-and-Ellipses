@@ -33,13 +33,12 @@ Partial Class MainWindow
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.xc_Box = New System.Windows.Forms.TextBox()
         Me.yc_Box = New System.Windows.Forms.TextBox()
         Me.r_Box = New System.Windows.Forms.TextBox()
         Me.CircleButton = New System.Windows.Forms.Button()
         Me.clearCanvas_button = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.CrclIndx = New System.Windows.Forms.Button()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.TBRed = New System.Windows.Forms.TrackBar()
         Me.TBGreen = New System.Windows.Forms.TrackBar()
@@ -53,13 +52,15 @@ Partial Class MainWindow
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TMRGen = New System.Windows.Forms.Timer(Me.components)
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.PrvwBtn = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.SveBtn = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.EllsIndx = New System.Windows.Forms.Button()
+        Me.Coordinate = New System.Windows.Forms.Label()
+        Me.DotCheck = New System.Windows.Forms.CheckBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.TBRed, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -70,6 +71,7 @@ Partial Class MainWindow
         '
         'PictureBox1
         '
+        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PictureBox1.Location = New System.Drawing.Point(632, 13)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(335, 362)
@@ -86,7 +88,6 @@ Partial Class MainWindow
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.xc_Box)
         Me.GroupBox1.Controls.Add(Me.yc_Box)
         Me.GroupBox1.Controls.Add(Me.r_Box)
@@ -166,15 +167,6 @@ Partial Class MainWindow
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "x"
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(50, 16)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(70, 13)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Center Points"
-        '
         'xc_Box
         '
         Me.xc_Box.Location = New System.Drawing.Point(50, 35)
@@ -207,36 +199,36 @@ Partial Class MainWindow
         '
         'clearCanvas_button
         '
-        Me.clearCanvas_button.Location = New System.Drawing.Point(103, 193)
+        Me.clearCanvas_button.Location = New System.Drawing.Point(31, 189)
         Me.clearCanvas_button.Name = "clearCanvas_button"
         Me.clearCanvas_button.Size = New System.Drawing.Size(99, 23)
         Me.clearCanvas_button.TabIndex = 0
         Me.clearCanvas_button.Text = "Clear Canvas"
         Me.clearCanvas_button.UseVisualStyleBackColor = True
         '
-        'Button1
+        'CrclIndx
         '
-        Me.Button1.Location = New System.Drawing.Point(124, 345)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(56, 19)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "DelCir"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.CrclIndx.Location = New System.Drawing.Point(64, 327)
+        Me.CrclIndx.Margin = New System.Windows.Forms.Padding(2)
+        Me.CrclIndx.Name = "CrclIndx"
+        Me.CrclIndx.Size = New System.Drawing.Size(56, 19)
+        Me.CrclIndx.TabIndex = 2
+        Me.CrclIndx.Text = "DelCir"
+        Me.CrclIndx.UseVisualStyleBackColor = True
         '
         'ListBox1
         '
         Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(124, 245)
+        Me.ListBox1.Location = New System.Drawing.Point(75, 227)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(120, 95)
+        Me.ListBox1.Size = New System.Drawing.Size(105, 95)
         Me.ListBox1.TabIndex = 3
         '
         'TBRed
         '
         Me.TBRed.BackColor = System.Drawing.Color.Red
         Me.TBRed.Location = New System.Drawing.Point(260, 41)
-        Me.TBRed.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TBRed.Margin = New System.Windows.Forms.Padding(2)
         Me.TBRed.Maximum = 255
         Me.TBRed.Name = "TBRed"
         Me.TBRed.Size = New System.Drawing.Size(226, 45)
@@ -248,7 +240,7 @@ Partial Class MainWindow
         '
         Me.TBGreen.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.TBGreen.Location = New System.Drawing.Point(260, 91)
-        Me.TBGreen.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TBGreen.Margin = New System.Windows.Forms.Padding(2)
         Me.TBGreen.Maximum = 255
         Me.TBGreen.Name = "TBGreen"
         Me.TBGreen.Size = New System.Drawing.Size(226, 45)
@@ -260,7 +252,7 @@ Partial Class MainWindow
         '
         Me.TBBlue.BackColor = System.Drawing.Color.Blue
         Me.TBBlue.Location = New System.Drawing.Point(260, 141)
-        Me.TBBlue.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TBBlue.Margin = New System.Windows.Forms.Padding(2)
         Me.TBBlue.Maximum = 255
         Me.TBBlue.Name = "TBBlue"
         Me.TBBlue.Size = New System.Drawing.Size(226, 45)
@@ -273,7 +265,7 @@ Partial Class MainWindow
         Me.TextBox1.BackColor = System.Drawing.Color.Red
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.Location = New System.Drawing.Point(509, 45)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.Size = New System.Drawing.Size(75, 13)
@@ -286,7 +278,7 @@ Partial Class MainWindow
         Me.REDCLR.BackColor = System.Drawing.Color.Red
         Me.REDCLR.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.REDCLR.Location = New System.Drawing.Point(509, 62)
-        Me.REDCLR.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.REDCLR.Margin = New System.Windows.Forms.Padding(2)
         Me.REDCLR.Name = "REDCLR"
         Me.REDCLR.ReadOnly = True
         Me.REDCLR.Size = New System.Drawing.Size(75, 13)
@@ -299,7 +291,7 @@ Partial Class MainWindow
         Me.TextBox3.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox3.Location = New System.Drawing.Point(509, 99)
-        Me.TextBox3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox3.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.ReadOnly = True
         Me.TextBox3.Size = New System.Drawing.Size(75, 13)
@@ -312,7 +304,7 @@ Partial Class MainWindow
         Me.GREENCLR.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.GREENCLR.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.GREENCLR.Location = New System.Drawing.Point(509, 116)
-        Me.GREENCLR.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GREENCLR.Margin = New System.Windows.Forms.Padding(2)
         Me.GREENCLR.Name = "GREENCLR"
         Me.GREENCLR.ReadOnly = True
         Me.GREENCLR.Size = New System.Drawing.Size(75, 13)
@@ -325,7 +317,7 @@ Partial Class MainWindow
         Me.TextBox5.BackColor = System.Drawing.Color.Blue
         Me.TextBox5.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox5.Location = New System.Drawing.Point(509, 152)
-        Me.TextBox5.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox5.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.ReadOnly = True
         Me.TextBox5.Size = New System.Drawing.Size(75, 13)
@@ -338,7 +330,7 @@ Partial Class MainWindow
         Me.BLUECLR.BackColor = System.Drawing.Color.Blue
         Me.BLUECLR.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.BLUECLR.Location = New System.Drawing.Point(509, 169)
-        Me.BLUECLR.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BLUECLR.Margin = New System.Windows.Forms.Padding(2)
         Me.BLUECLR.Name = "BLUECLR"
         Me.BLUECLR.ReadOnly = True
         Me.BLUECLR.Size = New System.Drawing.Size(75, 13)
@@ -349,7 +341,7 @@ Partial Class MainWindow
         'PictureBox2
         '
         Me.PictureBox2.Location = New System.Drawing.Point(509, 227)
-        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(75, 41)
         Me.PictureBox2.TabIndex = 13
@@ -370,15 +362,15 @@ Partial Class MainWindow
         Me.TMRGen.Enabled = True
         Me.TMRGen.Interval = 1
         '
-        'Button2
+        'PrvwBtn
         '
-        Me.Button2.Location = New System.Drawing.Point(404, 237)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(56, 19)
-        Me.Button2.TabIndex = 15
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.PrvwBtn.Location = New System.Drawing.Point(430, 202)
+        Me.PrvwBtn.Margin = New System.Windows.Forms.Padding(2)
+        Me.PrvwBtn.Name = "PrvwBtn"
+        Me.PrvwBtn.Size = New System.Drawing.Size(56, 19)
+        Me.PrvwBtn.TabIndex = 15
+        Me.PrvwBtn.Text = "Button2"
+        Me.PrvwBtn.UseVisualStyleBackColor = True
         '
         'Label8
         '
@@ -393,20 +385,20 @@ Partial Class MainWindow
         'TextBox2
         '
         Me.TextBox2.Location = New System.Drawing.Point(273, 278)
-        Me.TextBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(132, 20)
         Me.TextBox2.TabIndex = 17
         '
-        'Button3
+        'SveBtn
         '
-        Me.Button3.Location = New System.Drawing.Point(348, 301)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(56, 19)
-        Me.Button3.TabIndex = 18
-        Me.Button3.Text = "save"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.SveBtn.Location = New System.Drawing.Point(348, 301)
+        Me.SveBtn.Margin = New System.Windows.Forms.Padding(2)
+        Me.SveBtn.Name = "SveBtn"
+        Me.SveBtn.Size = New System.Drawing.Size(56, 19)
+        Me.SveBtn.TabIndex = 18
+        Me.SveBtn.Text = "Save"
+        Me.SveBtn.UseVisualStyleBackColor = True
         '
         'Label9
         '
@@ -422,33 +414,55 @@ Partial Class MainWindow
         '
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(275, 342)
-        Me.ComboBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ComboBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(130, 21)
         Me.ComboBox1.TabIndex = 20
         '
-        'Button4
+        'EllsIndx
         '
-        Me.Button4.Location = New System.Drawing.Point(188, 344)
-        Me.Button4.Margin = New System.Windows.Forms.Padding(2)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(56, 19)
-        Me.Button4.TabIndex = 21
-        Me.Button4.Text = "Dellips"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.EllsIndx.Location = New System.Drawing.Point(137, 327)
+        Me.EllsIndx.Margin = New System.Windows.Forms.Padding(2)
+        Me.EllsIndx.Name = "EllsIndx"
+        Me.EllsIndx.Size = New System.Drawing.Size(56, 19)
+        Me.EllsIndx.TabIndex = 21
+        Me.EllsIndx.Text = "Dellips"
+        Me.EllsIndx.UseVisualStyleBackColor = True
+        '
+        'Coordinate
+        '
+        Me.Coordinate.AutoSize = True
+        Me.Coordinate.BackColor = System.Drawing.Color.Transparent
+        Me.Coordinate.Location = New System.Drawing.Point(636, 358)
+        Me.Coordinate.Name = "Coordinate"
+        Me.Coordinate.Size = New System.Drawing.Size(20, 13)
+        Me.Coordinate.TabIndex = 22
+        Me.Coordinate.Text = "x,y"
+        '
+        'DotCheck
+        '
+        Me.DotCheck.AutoSize = True
+        Me.DotCheck.Location = New System.Drawing.Point(150, 193)
+        Me.DotCheck.Name = "DotCheck"
+        Me.DotCheck.Size = New System.Drawing.Size(58, 17)
+        Me.DotCheck.TabIndex = 13
+        Me.DotCheck.Text = "Dotted"
+        Me.DotCheck.UseVisualStyleBackColor = True
         '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(986, 386)
-        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.DotCheck)
+        Me.Controls.Add(Me.Coordinate)
+        Me.Controls.Add(Me.EllsIndx)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.SveBtn)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.PrvwBtn)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.BLUECLR)
@@ -461,7 +475,7 @@ Partial Class MainWindow
         Me.Controls.Add(Me.TBGreen)
         Me.Controls.Add(Me.TBRed)
         Me.Controls.Add(Me.ListBox1)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.CrclIndx)
         Me.Controls.Add(Me.clearCanvas_button)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.PictureBox1)
@@ -486,7 +500,6 @@ Partial Class MainWindow
     Friend WithEvents xc_Box As TextBox
     Friend WithEvents yc_Box As TextBox
     Friend WithEvents r_Box As TextBox
-    Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
@@ -495,7 +508,7 @@ Partial Class MainWindow
     Friend WithEvents b_box As System.Windows.Forms.TextBox
     Friend WithEvents a_box As System.Windows.Forms.TextBox
     Friend WithEvents EllipseButton As System.Windows.Forms.Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents CrclIndx As Button
     Friend WithEvents ListBox1 As ListBox
     Friend WithEvents TBRed As TrackBar
     Friend WithEvents TBGreen As TrackBar
@@ -509,11 +522,13 @@ Partial Class MainWindow
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Label7 As Label
     Friend WithEvents TMRGen As Timer
-    Friend WithEvents Button2 As Button
+    Friend WithEvents PrvwBtn As Button
     Friend WithEvents Label8 As Label
     Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Button3 As Button
+    Friend WithEvents SveBtn As Button
     Friend WithEvents Label9 As Label
     Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents EllsIndx As System.Windows.Forms.Button
+    Friend WithEvents Coordinate As System.Windows.Forms.Label
+    Friend WithEvents DotCheck As System.Windows.Forms.CheckBox
 End Class

@@ -82,7 +82,7 @@
         Elmt(N) = P
         N = N + 1
     End Sub
-
+    'help to simplify the code :D
     Public Sub createCircle(xc As Double, yc As Double, r As Double)
         Dim cir As Circle = New Circle
         Dim y = r
@@ -93,12 +93,26 @@
         setCirclePixels(xc, yc, x, y)
         storeCircle(xc, yc, x, y)
         While y >= x
-            x = x + 1
-            If d < 0 Then
-                d = d + (2 * x) + 3
-            ElseIf d >= 0 Then
-                y = y - 1
-                d = d + (2 * x) - (2 * y) + 5
+            If MainWindow.DotCheck.Checked = True Then
+                x = x + 1
+                x = x + 1
+                If d < 0 Then
+                    d = d + (2 * x) + 3
+                ElseIf d >= 0 Then
+                    y = y - 1
+                    y = y - 1
+                    d = d + (2 * x) - (2 * y) + 5
+                End If
+            End If
+
+            If MainWindow.DotCheck.Checked = False Then
+                x = x + 1
+                If d < 0 Then
+                    d = d + (2 * x) + 3
+                ElseIf d >= 0 Then
+                    y = y - 1
+                    d = d + (2 * x) - (2 * y) + 5
+                End If
             End If
             setCirclePixels(xc, yc, x, y)
             storeCircle(xc, yc, x, y)
