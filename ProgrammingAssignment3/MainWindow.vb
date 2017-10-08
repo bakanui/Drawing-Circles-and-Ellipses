@@ -11,6 +11,7 @@ Public Class MainWindow
         circle.circleInit()
         canvas = New Bitmap(PictureBox1.Width, PictureBox1.Height)
         Miscellanous.clearCanvas()
+        Miscellanous.populateCombo()
     End Sub
 
     Private Sub CircleButton_Click(sender As Object, e As EventArgs) Handles CircleButton.Click

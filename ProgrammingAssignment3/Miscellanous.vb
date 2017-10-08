@@ -31,12 +31,12 @@
     End Sub
     Public Shared Sub refreshEllipse()
         If MainWindow.ListBox2.Items.Count > 0 Then
-            If Ellipse.Elmt(0).yc = 0 Then
+            If Ellipse.eElmt(0).xc = 0 Then
                 clearCanvas()
                 refreshCircle()
             Else
-                For j = 0 To Ellipse.Elmt.Length - 2
-                    Ellipse.setEllipsePixels(Ellipse.Elmt(j).xc, Ellipse.Elmt(j).yc, Ellipse.Elmt(j).a, Ellipse.Elmt(j).b)
+                For f = 0 To Ellipse.eElmt.Length - 2
+                    Ellipse.setEllipsePixels(Ellipse.eElmt(f).xc, Ellipse.eElmt(f).yc, Ellipse.eElmt(f).x, Ellipse.eElmt(f).y)
                 Next
             End If
         End If
@@ -71,5 +71,13 @@
         MainWindow.canvas.SetPixel(xc - x + 1, yc + y, color)
         MainWindow.canvas.SetPixel(xc + x - 1, yc - y, color)
         MainWindow.canvas.SetPixel(xc - x + 1, yc - y, color)
+    End Sub
+
+    Public Shared Sub populateCombo()
+        For h = 0 To 11
+            h = h + 1
+            MainWindow.ComboBox1.Items.Add(h)
+        Next
+        MainWindow.ComboBox1.SelectedIndex = 0
     End Sub
 End Class

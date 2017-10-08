@@ -32,7 +32,7 @@
         If i < idx - 1 Then
             MsgBox("You can only delete bottom-most object", MsgBoxStyle.Critical, "Error")
         Else
-            Dim k As Integer = 0
+            Dim k As Integer
             ReDim Preserve Elmt(N)
             Dim length As Integer = c(i).cLength
             Dim Nend As Integer = c(i).endN
@@ -47,8 +47,6 @@
             ReDim Preserve Elmt(N)
             Miscellanous.refreshPoints()
         End If
-        'somehow needs to refill the screen with stored points
-        'could point canvasRefresh here
     End Sub
 
     Public Shared Sub setCirclePixels(xc As Double, yc As Double, x As Double, y As Double)

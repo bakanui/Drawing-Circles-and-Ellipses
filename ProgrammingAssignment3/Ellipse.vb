@@ -11,7 +11,7 @@
     Public Shared e() As Ellipse
     Public Shared idx As Integer
     Public Shared N As Integer
-    Public Shared Elmt() As Point
+    Public Shared eElmt() As Point
     Public Property eLength As Integer
 
     Sub ellipseInit()
@@ -19,7 +19,7 @@
         N = 0
         tempN = 0
         ReDim e(-1)
-        ReDim Elmt(-1)
+        ReDim eElmt(-1)
     End Sub
 
     Public Sub ellipseIdx(sN As Integer, eN As Integer)
@@ -33,7 +33,7 @@
             MsgBox("You can only delete bottom-most object", MsgBoxStyle.Critical, "Error")
         Else
             Dim k As Integer
-            ReDim Preserve Elmt(N)
+            ReDim Preserve eElmt(N)
             Dim length As Integer = e(i).eLength
             Dim Nend As Integer = e(i).endN
             If Nend = N Then
@@ -44,7 +44,7 @@
             Next
             idx = idx - 1
             ReDim Preserve e(idx)
-            ReDim Preserve Elmt(N)
+            ReDim Preserve eElmt(N)
             Miscellanous.refreshPoints()
         End If
     End Sub
@@ -57,12 +57,12 @@
         Dim P As Point
         P = New Point
         P.SetP(pxc, pyc, pa, pb)
-        ReDim Preserve Elmt(N)
-        Elmt(N) = P
+        ReDim Preserve eElmt(N)
+        eElmt(N) = P
         N = N + 1
     End Sub
     'help to simplify the code :D
-    Sub createEllipse(xc As Integer, yc As Integer, a As Integer, b As Integer)
+    Sub createEllipse(xc As Double, yc As Double, a As Double, b As Double)
         Dim ells As Ellipse = New Ellipse
         Dim x = 0
         Dim y = b
