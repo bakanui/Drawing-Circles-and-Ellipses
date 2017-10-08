@@ -19,7 +19,13 @@ Public Class MainWindow
         Dim xc As Integer = xc_Box.Text
         Dim yc As Integer = yc_Box.Text
         Dim r As Integer = r_Box.Text
-        circle.createCircle(xc, yc, r)
+        If r > xc Or yc Then
+            MsgBox("Radius cannot be greater than the center points!", MsgBoxStyle.Critical, "Error")
+        ElseIf r < 0 Then
+            MsgBox("Radius out of bounds, cannot be negative numbers!", MsgBoxStyle.Critical, "Error")
+        Else
+            circle.createCircle(xc, yc, r)
+        End If
         Miscellanous.list()
     End Sub
 
@@ -32,7 +38,13 @@ Public Class MainWindow
         Dim yc As Integer = yc_Box.Text
         Dim a As Integer = a_box.Text
         Dim b As Integer = b_box.Text
-        ellipse.createEllipse(xc, yc, a, b)
+        If a Or b > xc Or yc Then
+            MsgBox("A or B cannot be greater than the center points!", MsgBoxStyle.Critical, "Error")
+        ElseIf a Or b < 0 Then
+            MsgBox("A or B out of bounds, cannot be negative numbers!", MsgBoxStyle.Critical, "Error")
+        Else
+            ellipse.createEllipse(xc, yc, a, b)
+        End If
         Miscellanous.list()
     End Sub
 
