@@ -7,8 +7,6 @@
     Public Property startN As Integer
     Public Property endN As Integer
 
-    Public Shared color
-
     Public Shared tempN As Integer
     Public Shared e() As Ellipse
     Public Shared idx As Integer
@@ -49,17 +47,14 @@
             idx = idx - 1
             ReDim Preserve e(idx - 1)
             ReDim Preserve Elmt(N)
-            Miscellanous.EllipserefreshPoints(N)
+            Miscellanous.refreshPoints()
         End If
         'somehow needs to refill the screen with stored points
         'could point canvasRefresh here
     End Sub
 
     Public Shared Sub setEllipsePixels(xc As Double, yc As Double, x As Double, y As Double)
-        MainWindow.canvas.SetPixel(xc + x - 1, yc + y, color)
-        MainWindow.canvas.SetPixel(xc - x + 1, yc + y, color)
-        MainWindow.canvas.SetPixel(xc + x - 1, yc - y, color)
-        MainWindow.canvas.SetPixel(xc - x + 1, yc - y, color)
+        Miscellanous.setPixelss(xc, yc, x, y)
     End Sub
 
     Overloads Sub storeEllipse(P As Point)
@@ -90,11 +85,9 @@
         If MainWindow.DotCheck.Checked = True Then
             Dim d1 = (4 * b2) - (4 * a2 * b) + a2
             While a2 * ((2 * y) - 1) >= 2 * b2 * (x + 1)
-                x = x + 1
-                x = x + 1
+                x = x + 2
                 If d1 > 0 Then
-                    y = y - 1
-                    y = y - 1
+                    y = y - 2
                     d1 = d1 + ((b2 * (8 * x + 12)) + (a2 * (8 - 8 * y)))
                 Else
                     d1 = d1 + (b2 * ((8 * x) + 12))
@@ -105,11 +98,9 @@
 
             Dim d2 = (b2 * ((2 * x) + 1) * ((2 * x) + 1)) + (4 * a2 * ((y - 1) * (y - 1))) - (4 * a2 * b2)
             While y > 0
-                y = y - 1
-                y = y - 1
+                y = y - 2
                 If d2 < 0 Then
-                    x = x + 1
-                    x = x + 1
+                    x = x + 2
                     d2 = d2 + ((b2 * (8 * x + 8)) + (a2 * (12 - (8 * y))))
                 Else
                     d2 = d2 + (a2 * (12 - (8 * y)))

@@ -7,8 +7,6 @@
     Public Property startN As Integer
     Public Property endN As Integer
 
-    Public Shared color
-
     Public Shared tempN As Integer
     Public Shared c() As Circle
     Public Shared idx As Integer
@@ -49,40 +47,25 @@
             idx = idx - 1
             ReDim Preserve c(idx - 1)
             ReDim Preserve Elmt(N)
-            Miscellanous.CirclerefreshPoints(N)
+            Miscellanous.refreshPoints()
         End If
         'somehow needs to refill the screen with stored points
         'could point canvasRefresh here
     End Sub
 
     Public Shared Sub setCirclePixels(xc As Double, yc As Double, x As Double, y As Double)
-        MainWindow.canvas.SetPixel(xc + x, yc + y, color)
-        MainWindow.canvas.SetPixel(xc - x, yc + y, color)
-        MainWindow.canvas.SetPixel(xc + x, yc - y, color)
-        MainWindow.canvas.SetPixel(xc - x, yc - y, color)
-        MainWindow.canvas.SetPixel(xc + y, yc + x, color)
-        MainWindow.canvas.SetPixel(xc - y, yc + x, color)
-        MainWindow.canvas.SetPixel(xc + y, yc - x, color)
-        MainWindow.canvas.SetPixel(xc - y, yc - x, color)
-    End Sub
-
-    Overloads Sub storeCircle(P As Point)
-        Dim i As Integer
-        ReDim Preserve Elmt(N)
-        Elmt(N) = P
-        N = N + 1
+        Miscellanous.setPixels(xc, yc, x, y)
     End Sub
 
     Overloads Sub storeCircle(pxc As Double, pyc As Double, px As Double, py As Double)
         Dim P As Point
-        Dim i As Integer
         P = New Point
         P.SetP(pxc, pyc, px, py)
         ReDim Preserve Elmt(N)
         Elmt(N) = P
         N = N + 1
     End Sub
-    'help to simplify the code :D
+
     Public Sub createCircle(xc As Double, yc As Double, r As Double)
         Dim cir As Circle = New Circle
         Dim y = r
@@ -94,13 +77,11 @@
         storeCircle(xc, yc, x, y)
         While y >= x
             If MainWindow.DotCheck.Checked = True Then
-                x = x + 1
-                x = x + 1
+                x = x + 2
                 If d < 0 Then
                     d = d + (2 * x) + 3
                 ElseIf d >= 0 Then
-                    y = y - 1
-                    y = y - 1
+                    y = y - 2
                     d = d + (2 * x) - (2 * y) + 5
                 End If
             End If

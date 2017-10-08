@@ -2,14 +2,11 @@
 
 Public Class MainWindow
     Public canvas As Bitmap
-    Dim circleIdentifier As Integer
     Dim circle As Circle = New Circle()
-    Dim ellipse As Ellipse = New Ellipse
-    Dim previewColor
+    Dim ellipse As Ellipse = New Ellipse()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Circle.color = Color.Black
-        Ellipse.color = Color.Black
+        Miscellanous.color = Color.Black
         PictureBox2.BackColor = Color.Black
         circle.circleInit()
         canvas = New Bitmap(PictureBox1.Width, PictureBox1.Height)
@@ -42,19 +39,6 @@ Public Class MainWindow
         ListBox1.Items.Remove(ListBox1.SelectedItem)
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles PrvwBtn.Click
-        Dim colors As DialogResult
-        colors = ColorDialog1.ShowDialog()
-
-        If colors = Windows.Forms.DialogResult.OK Then
-            Circle.color = ColorDialog1.Color
-            Ellipse.color = ColorDialog1.Color
-            PictureBox2.BackColor = ColorDialog1.Color
-
-        End If
-
-    End Sub
-
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles EllsIndx.Click
         ellipse.ellipseDelete(ListBox1.SelectedIndex)
         ListBox1.Items.Remove(ListBox1.SelectedItem)
@@ -62,10 +46,6 @@ Public Class MainWindow
 
     Private Sub PictureBox1_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles PictureBox1.MouseMove
         Coordinate.Text = (e.X & ", " & e.Y)
-    End Sub
-
-    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
-
     End Sub
 
     Private Sub SaveAsPictureToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveAsPictureToolStripMenuItem.Click
@@ -82,5 +62,17 @@ Public Class MainWindow
         End If
     End Sub
 
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+        Dim colors As DialogResult
+        colors = ColorDialog1.ShowDialog()
 
+        If colors = Windows.Forms.DialogResult.OK Then
+            Miscellanous.color = ColorDialog1.Color
+            PictureBox2.BackColor = ColorDialog1.Color
+        End If
+    End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        Miscellanous.refreshPoints()
+    End Sub
 End Class
