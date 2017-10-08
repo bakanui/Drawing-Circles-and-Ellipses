@@ -35,7 +35,7 @@ Public Class MainWindow
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles CrclIndx.Click
-        circle.circleDelete(ListBox1.SelectedIndex)
+        Circle.circleDelete(ListBox1.SelectedIndex)
         ListBox1.Items.Remove(ListBox1.SelectedItem)
     End Sub
 
@@ -49,18 +49,18 @@ Public Class MainWindow
         blue1 = BLUECLR.Text
         previewColor = Color.FromArgb(red1, green1, blue1)
         PictureBox2.BackColor = previewColor
-        circle.color = previewColor
-        ellipse.color = previewColor
+        Circle.color = previewColor
+        Ellipse.color = previewColor
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles PrvwBtn.Click
-        circle.color = previewColor
-        ellipse.color = previewColor
+        Circle.color = previewColor
+        Ellipse.color = previewColor
 
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles EllsIndx.Click
-        ellipse.ellipseDelete(ListBox1.SelectedIndex)
+        Ellipse.ellipseDelete(ListBox1.SelectedIndex)
         ListBox1.Items.Remove(ListBox1.SelectedItem)
     End Sub
 

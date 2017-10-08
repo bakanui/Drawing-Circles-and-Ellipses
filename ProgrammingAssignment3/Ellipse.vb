@@ -90,11 +90,9 @@
         If MainWindow.DotCheck.Checked = True Then
             Dim d1 = (4 * b2) - (4 * a2 * b) + a2
             While a2 * ((2 * y) - 1) >= 2 * b2 * (x + 1)
-                x = x + 1
-                x = x + 1
+                x = x + 2
                 If d1 > 0 Then
-                    y = y - 1
-                    y = y - 1
+                    y = y - 2
                     d1 = d1 + ((b2 * (8 * x + 12)) + (a2 * (8 - 8 * y)))
                 Else
                     d1 = d1 + (b2 * ((8 * x) + 12))
@@ -105,8 +103,7 @@
 
             Dim d2 = (b2 * ((2 * x) + 1) * ((2 * x) + 1)) + (4 * a2 * ((y - 1) * (y - 1))) - (4 * a2 * b2)
             While y > 0
-                y = y - 1
-                y = y - 1
+                y = y - 2
                 If d2 < 0 Then
                     x = x + 1
                     x = x + 1
