@@ -6,20 +6,11 @@ Public Class MainWindow
     Dim circle As Circle = New Circle()
     Dim ellipse As Ellipse = New Ellipse
     Dim previewColor
-    Dim a As StreamReader
-    Dim b As String
-    Dim c As String = "C:\Saved\pwtest.txt"
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         circle.circleInit()
         canvas = New Bitmap(PictureBox1.Width, PictureBox1.Height)
         Miscellanous.clearCanvas()
-        If Not File.Exists(c) Then
-            Dim d As FileStream
-            d = File.Create(c)
-            d.Close()
-        End If
-        ReadFile()
     End Sub
 
     Private Sub CircleButton_Click(sender As Object, e As EventArgs) Handles CircleButton.Click
@@ -68,31 +59,6 @@ Public Class MainWindow
 
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles SveBtn.Click
-        If TextBox2.Text = Nothing Then
-            MsgBox("Enter a password to be saved")
-        Else
-            File.AppendAllText(c, TextBox2.Text & vbCrLf)
-            TextBox2.Text = ""
-            MsgBox("password saved", MsgBoxStyle.Information, "saved")
-            ReadFile()
-        End If
-    End Sub
-
-    Private Sub ReadFile()
-        Try
-            ComboBox1.Items.Clear()
-            a = File.OpenText(c)
-            While a.Peek <> -1
-                b = a.ReadLine()
-                ComboBox1.Items.Add(b)
-            End While
-            a.Close()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
-
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles EllsIndx.Click
         ellipse.ellipseDelete(ListBox1.SelectedIndex)
         ListBox1.Items.Remove(ListBox1.SelectedItem)
@@ -100,5 +66,20 @@ Public Class MainWindow
 
     Private Sub PictureBox1_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles PictureBox1.MouseMove
         Coordinate.Text = (e.X & ", " & e.Y)
+    End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        ofdImage.ShowDialog()
+        If ofdImage.FileName > "" Then
+            PictureBox1.ImageLocation = ofdImage.FileName
+        End If
+
+    End Sub
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        sfdImage.ShowDialog()
+        If sfdImage.FileName > "" Then
+            PictureBox1.Image.Save(sfdImage.FileName)
+        End If
     End Sub
 End Class
