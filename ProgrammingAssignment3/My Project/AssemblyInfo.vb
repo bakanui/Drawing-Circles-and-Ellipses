@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("ProgrammingAssignment3")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyTitle("Drawing Circles and Ellipses")>
+<Assembly: AssemblyDescription("An application that allows the user to draw circles and ellipses on a screen. This is Computer Graphics and Animation's Programming Assignment 3")>
+<Assembly: AssemblyCompany("Group 2")>
 <Assembly: AssemblyProduct("ProgrammingAssignment3")>
-<Assembly: AssemblyCopyright("Copyright ©  2017")>
+<Assembly: AssemblyCopyright("Copyright © 2017 Group 2")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

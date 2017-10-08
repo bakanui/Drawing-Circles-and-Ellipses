@@ -76,4 +76,9 @@ Public Class MainWindow
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         Miscellanous.refreshPoints()
     End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        Dim about As New About()
+        about.Show()
+    End Sub
 End Class
