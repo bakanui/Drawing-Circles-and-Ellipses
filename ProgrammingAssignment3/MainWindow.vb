@@ -8,6 +8,9 @@ Public Class MainWindow
     Dim previewColor
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Circle.color = Color.Black
+        Ellipse.color = Color.Black
+        PictureBox2.BackColor = Color.Black
         circle.circleInit()
         canvas = New Bitmap(PictureBox1.Width, PictureBox1.Height)
         Miscellanous.clearCanvas()
@@ -35,32 +38,25 @@ Public Class MainWindow
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles CrclIndx.Click
-        Circle.circleDelete(ListBox1.SelectedIndex)
+        circle.circleDelete(ListBox1.SelectedIndex)
         ListBox1.Items.Remove(ListBox1.SelectedItem)
     End Sub
 
-    Private Sub TMRGen_Tick(sender As Object, e As EventArgs) Handles TMRGen.Tick
-        REDCLR.Text = TBRed.Value
-        GREENCLR.Text = TBGreen.Value
-        BLUECLR.Text = TBBlue.Value
-        Dim red1, green1, blue1 As Integer
-        red1 = REDCLR.Text
-        green1 = GREENCLR.Text
-        blue1 = BLUECLR.Text
-        previewColor = Color.FromArgb(red1, green1, blue1)
-        PictureBox2.BackColor = previewColor
-        Circle.color = previewColor
-        Ellipse.color = previewColor
-    End Sub
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles PrvwBtn.Click
-        Circle.color = previewColor
-        Ellipse.color = previewColor
+        Dim colors As DialogResult
+        colors = ColorDialog1.ShowDialog()
+
+        If colors = Windows.Forms.DialogResult.OK Then
+            Circle.color = ColorDialog1.Color
+            Ellipse.color = ColorDialog1.Color
+            PictureBox2.BackColor = ColorDialog1.Color
+
+        End If
 
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles EllsIndx.Click
-        Ellipse.ellipseDelete(ListBox1.SelectedIndex)
+        ellipse.ellipseDelete(ListBox1.SelectedIndex)
         ListBox1.Items.Remove(ListBox1.SelectedItem)
     End Sub
 
@@ -68,18 +64,23 @@ Public Class MainWindow
         Coordinate.Text = (e.X & ", " & e.Y)
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-        ofdImage.ShowDialog()
-        If ofdImage.FileName > "" Then
-            PictureBox1.ImageLocation = ofdImage.FileName
-        End If
+    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
 
     End Sub
 
-    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub SaveAsPictureToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveAsPictureToolStripMenuItem.Click
         sfdImage.ShowDialog()
         If sfdImage.FileName > "" Then
             PictureBox1.Image.Save(sfdImage.FileName)
         End If
     End Sub
+
+    Private Sub SavePictureToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SavePictureToolStripMenuItem.Click
+        ofdImage.ShowDialog()
+        If ofdImage.FileName > "" Then
+            PictureBox1.ImageLocation = ofdImage.FileName
+        End If
+    End Sub
+
+
 End Class

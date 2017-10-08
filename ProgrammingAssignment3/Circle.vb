@@ -27,15 +27,18 @@
     Public Sub circleIdx(sN As Integer, eN As Integer)
         startN = sN
         endN = eN
-        cLength = endN - startN
+        cLength = endN - startN - 1
     End Sub
 
     Public Shared Sub circleDelete(i As Integer)
         If i < idx - 1 Then
             MsgBox("You can only delete bottom-most object", MsgBoxStyle.Critical, "Error")
         Else
+            Dim j As Integer
+            Dim k As Integer = 0
             ReDim Preserve Elmt(N)
-            Dim length As Integer = c(i).cLength
+            Dim erasure As Integer = Elmt.Length - 2
+            Dim length As Integer = c(i).cLength + 1
             Dim Nend As Integer = c(i).endN
             If Nend = N Then
                 N = N - length
@@ -63,15 +66,23 @@
         MainWindow.canvas.SetPixel(xc - y, yc - x, color)
     End Sub
 
-    Sub storeCircle(pxc As Double, pyc As Double, px As Double, py As Double)
+    Overloads Sub storeCircle(P As Point)
+        Dim i As Integer
+        ReDim Preserve Elmt(N)
+        Elmt(N) = P
+        N = N + 1
+    End Sub
+
+    Overloads Sub storeCircle(pxc As Double, pyc As Double, px As Double, py As Double)
         Dim P As Point
+        Dim i As Integer
         P = New Point
         P.SetP(pxc, pyc, px, py)
         ReDim Preserve Elmt(N)
         Elmt(N) = P
         N = N + 1
     End Sub
-
+    'help to simplify the code :D
     Public Sub createCircle(xc As Double, yc As Double, r As Double)
         Dim cir As Circle = New Circle
         Dim y = r
@@ -83,14 +94,17 @@
         storeCircle(xc, yc, x, y)
         While y >= x
             If MainWindow.DotCheck.Checked = True Then
-                x = x + 2
+                x = x + 1
+                x = x + 1
                 If d < 0 Then
                     d = d + (2 * x) + 3
                 ElseIf d >= 0 Then
-                    y = y - 2
+                    y = y - 1
+                    y = y - 1
                     d = d + (2 * x) - (2 * y) + 5
                 End If
             End If
+
             If MainWindow.DotCheck.Checked = False Then
                 x = x + 1
                 If d < 0 Then
