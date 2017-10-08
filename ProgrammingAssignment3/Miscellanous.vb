@@ -13,19 +13,32 @@
 
     Public Shared Sub refreshPoints()
         clearCanvas()
-        If Circle.Elmt(0).xc = 0 Then
-            clearCanvas()
-        Else
-            For j = 0 To Circle.Elmt.Length - 2
-                Circle.setCirclePixels(Circle.Elmt(j).xc, Circle.Elmt(j).yc, Circle.Elmt(j).x, Circle.Elmt(j).y)
-            Next
+        refreshCircle()
+        refreshEllipse()
+    End Sub
+
+    Public Shared Sub refreshCircle()
+        If MainWindow.ListBox1.Items.Count > 0 Then
+            If Circle.Elmt(0).xc = 0 Then
+                clearCanvas()
+                refreshEllipse()
+            Else
+                For j = 0 To Circle.Elmt.Length - 2
+                    Circle.setCirclePixels(Circle.Elmt(j).xc, Circle.Elmt(j).yc, Circle.Elmt(j).x, Circle.Elmt(j).y)
+                Next
+            End If
         End If
-        If Ellipse.Elmt(0).yc = 0 Then
-            clearCanvas()
-        Else
-            For j = 0 To Ellipse.Elmt.Length - 2
-                Ellipse.setEllipsePixels(Ellipse.Elmt(j).xc, Ellipse.Elmt(j).yc, Ellipse.Elmt(j).a, Ellipse.Elmt(j).b)
-            Next
+    End Sub
+    Public Shared Sub refreshEllipse()
+        If MainWindow.ListBox2.Items.Count > 0 Then
+            If Ellipse.Elmt(0).yc = 0 Then
+                clearCanvas()
+                refreshCircle()
+            Else
+                For j = 0 To Ellipse.Elmt.Length - 2
+                    Ellipse.setEllipsePixels(Ellipse.Elmt(j).xc, Ellipse.Elmt(j).yc, Ellipse.Elmt(j).a, Ellipse.Elmt(j).b)
+                Next
+            End If
         End If
     End Sub
 

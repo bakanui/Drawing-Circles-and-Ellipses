@@ -25,18 +25,16 @@
     Public Sub circleIdx(sN As Integer, eN As Integer)
         startN = sN
         endN = eN
-        cLength = endN - startN - 1
+        cLength = endN - startN
     End Sub
 
     Public Shared Sub circleDelete(i As Integer)
         If i < idx - 1 Then
             MsgBox("You can only delete bottom-most object", MsgBoxStyle.Critical, "Error")
         Else
-            Dim j As Integer
             Dim k As Integer = 0
             ReDim Preserve Elmt(N)
-            Dim erasure As Integer = Elmt.Length - 2
-            Dim length As Integer = c(i).cLength + 1
+            Dim length As Integer = c(i).cLength
             Dim Nend As Integer = c(i).endN
             If Nend = N Then
                 N = N - length
@@ -45,7 +43,7 @@
                 c(i) = c(i + 1)
             Next
             idx = idx - 1
-            ReDim Preserve c(idx - 1)
+            ReDim Preserve c(idx)
             ReDim Preserve Elmt(N)
             Miscellanous.refreshPoints()
         End If
@@ -57,7 +55,7 @@
         Miscellanous.setPixels(xc, yc, x, y)
     End Sub
 
-    Overloads Sub storeCircle(pxc As Double, pyc As Double, px As Double, py As Double)
+    Sub storeCircle(pxc As Double, pyc As Double, px As Double, py As Double)
         Dim P As Point
         P = New Point
         P.SetP(pxc, pyc, px, py)
@@ -85,7 +83,6 @@
                     d = d + (2 * x) - (2 * y) + 5
                 End If
             End If
-
             If MainWindow.DotCheck.Checked = False Then
                 x = x + 1
                 If d < 0 Then

@@ -25,18 +25,16 @@
     Public Sub ellipseIdx(sN As Integer, eN As Integer)
         startN = sN
         endN = eN
-        eLength = endN - startN - 1
+        eLength = endN - startN
     End Sub
 
     Public Shared Sub ellipseDelete(i As Integer)
         If i < idx - 1 Then
             MsgBox("You can only delete bottom-most object", MsgBoxStyle.Critical, "Error")
         Else
-            Dim j As Integer
-            Dim k As Integer = 0
+            Dim k As Integer
             ReDim Preserve Elmt(N)
-            Dim erasure As Integer = Elmt.Length - 2
-            Dim length As Integer = e(i).eLength + 1
+            Dim length As Integer = e(i).eLength
             Dim Nend As Integer = e(i).endN
             If Nend = N Then
                 N = N - length
@@ -45,28 +43,18 @@
                 e(i) = e(i + 1)
             Next
             idx = idx - 1
-            ReDim Preserve e(idx - 1)
+            ReDim Preserve e(idx)
             ReDim Preserve Elmt(N)
             Miscellanous.refreshPoints()
         End If
-        'somehow needs to refill the screen with stored points
-        'could point canvasRefresh here
     End Sub
 
     Public Shared Sub setEllipsePixels(xc As Double, yc As Double, x As Double, y As Double)
         Miscellanous.setPixelss(xc, yc, x, y)
     End Sub
 
-    Overloads Sub storeEllipse(P As Point)
-        Dim i As Integer
-        ReDim Preserve Elmt(N)
-        Elmt(N) = P
-        N = N + 1
-    End Sub
-
-    Overloads Sub storeEllipse(pxc As Double, pyc As Double, pa As Double, pb As Double)
+    Sub storeEllipse(pxc As Double, pyc As Double, pa As Double, pb As Double)
         Dim P As Point
-        Dim i As Integer
         P = New Point
         P.SetP(pxc, pyc, pa, pb)
         ReDim Preserve Elmt(N)

@@ -40,8 +40,8 @@ Public Class MainWindow
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles EllsIndx.Click
-        ellipse.ellipseDelete(ListBox1.SelectedIndex)
-        ListBox1.Items.Remove(ListBox1.SelectedItem)
+        Ellipse.ellipseDelete(ListBox2.SelectedIndex)
+        ListBox2.Items.Remove(ListBox2.SelectedItem)
     End Sub
 
     Private Sub PictureBox1_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles PictureBox1.MouseMove
