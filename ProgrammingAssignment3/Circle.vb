@@ -6,6 +6,7 @@
 
     Public Property startN As Integer
     Public Property endN As Integer
+    Public Property thiccness As Integer
 
     Public Shared tempN As Integer
     Public Shared c() As Circle
@@ -14,7 +15,7 @@
     Public Shared Elmt() As Point
     Public Property cLength As Integer
 
-    Sub circleInit()
+    Public Shared Sub circleInit()
         idx = 0
         N = 0
         tempN = 0
@@ -22,10 +23,11 @@
         ReDim Elmt(-1)
     End Sub
 
-    Public Sub circleIdx(sN As Integer, eN As Integer)
+    Public Sub circleIdx(sN As Integer, eN As Integer, thicc As Integer)
         startN = sN
         endN = eN
         cLength = endN - startN
+        thiccness = thicc
     End Sub
 
     Public Shared Sub circleDelete(i As Integer)
@@ -68,9 +70,11 @@
         Dim x = 0
         Dim d = 1 - r
         tempN = N
+        Dim thicc As Integer = Convert.ToInt32(MainWindow.ComboBox1.Text)
         ReDim Preserve c(idx)
         setCirclePixels(xc, yc, x, y)
         storeCircle(xc, yc, x, y)
+        Miscellanous.thiccCircle(xc, yc, x, y, thicc)
         While y >= x
             If MainWindow.DotCheck.Checked = True Then
                 x = x + 2
@@ -92,9 +96,10 @@
             End If
             setCirclePixels(xc, yc, x, y)
             storeCircle(xc, yc, x, y)
+            Miscellanous.thiccCircle(xc, yc, x, y, thicc)
         End While
         MainWindow.PictureBox1.Image = MainWindow.canvas
-        cir.circleIdx(tempN, N)
+        cir.circleIdx(tempN, N, thicc)
         c(idx) = cir
         idx = idx + 1
     End Sub

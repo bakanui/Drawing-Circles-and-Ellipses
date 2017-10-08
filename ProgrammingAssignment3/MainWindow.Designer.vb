@@ -51,21 +51,19 @@ Partial Class MainWindow
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SavePictureToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveAsPictureToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SaveAsPointToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManualToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -318,22 +316,16 @@ Partial Class MainWindow
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SavePictureToolStripMenuItem, Me.SaveToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
-        'SavePictureToolStripMenuItem
-        '
-        Me.SavePictureToolStripMenuItem.Name = "SavePictureToolStripMenuItem"
-        Me.SavePictureToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
-        Me.SavePictureToolStripMenuItem.Text = "Open"
-        '
         'SaveToolStripMenuItem
         '
-        Me.SaveToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveAsPictureToolStripMenuItem, Me.SaveAsPointToolStripMenuItem})
+        Me.SaveToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveAsPictureToolStripMenuItem})
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SaveToolStripMenuItem.Text = "Save"
         '
         'SaveAsPictureToolStripMenuItem
@@ -341,12 +333,6 @@ Partial Class MainWindow
         Me.SaveAsPictureToolStripMenuItem.Name = "SaveAsPictureToolStripMenuItem"
         Me.SaveAsPictureToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
         Me.SaveAsPictureToolStripMenuItem.Text = "Save As Picture"
-        '
-        'SaveAsPointToolStripMenuItem
-        '
-        Me.SaveAsPointToolStripMenuItem.Name = "SaveAsPointToolStripMenuItem"
-        Me.SaveAsPointToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
-        Me.SaveAsPointToolStripMenuItem.Text = "Save As Point"
         '
         'HelpToolStripMenuItem
         '
@@ -364,7 +350,7 @@ Partial Class MainWindow
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(114, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'Label8
@@ -387,34 +373,12 @@ Partial Class MainWindow
         Me.Label9.TabIndex = 28
         Me.Label9.Text = "Ellipse(s)"
         '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(13, 45)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(42, 17)
-        Me.CheckBox1.TabIndex = 29
-        Me.CheckBox1.Text = "Arc"
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
-        'CheckBox2
-        '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(13, 71)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(51, 17)
-        Me.CheckBox2.TabIndex = 30
-        Me.CheckBox2.Text = "Chart"
-        Me.CheckBox2.UseVisualStyleBackColor = True
-        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.Label10)
         Me.GroupBox2.Controls.Add(Me.ComboBox1)
         Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.Controls.Add(Me.CheckBox2)
         Me.GroupBox2.Controls.Add(Me.PictureBox2)
-        Me.GroupBox2.Controls.Add(Me.CheckBox1)
         Me.GroupBox2.Controls.Add(Me.DotCheck)
         Me.GroupBox2.Location = New System.Drawing.Point(402, 401)
         Me.GroupBox2.Name = "GroupBox2"
@@ -448,6 +412,10 @@ Partial Class MainWindow
         Me.Button1.TabIndex = 32
         Me.Button1.Text = "Refresh Canvas"
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
         'MainWindow
         '
@@ -512,7 +480,7 @@ Partial Class MainWindow
     Friend WithEvents ColorDialog1 As ColorDialog
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SavePictureToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OpenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SaveAsPictureToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SaveAsPointToolStripMenuItem As ToolStripMenuItem
@@ -527,4 +495,7 @@ Partial Class MainWindow
     Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ManualToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents SaveEllipseToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SaveFileDialog1 As SaveFileDialog
 End Class

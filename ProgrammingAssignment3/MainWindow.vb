@@ -4,6 +4,7 @@ Public Class MainWindow
     Public canvas As Bitmap
     Dim circle As Circle = New Circle()
     Dim ellipse As Ellipse = New Ellipse()
+    Public file
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Miscellanous.color = Color.Black
@@ -51,15 +52,10 @@ Public Class MainWindow
 
     Private Sub SaveAsPictureToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveAsPictureToolStripMenuItem.Click
         sfdImage.ShowDialog()
+        sfdImage.Title = "Save Canvas as JPEG"
+        sfdImage.Filter = "JPEG Image|*.jpg"
         If sfdImage.FileName > "" Then
             PictureBox1.Image.Save(sfdImage.FileName)
-        End If
-    End Sub
-
-    Private Sub SavePictureToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SavePictureToolStripMenuItem.Click
-        ofdImage.ShowDialog()
-        If ofdImage.FileName > "" Then
-            PictureBox1.ImageLocation = ofdImage.FileName
         End If
     End Sub
 

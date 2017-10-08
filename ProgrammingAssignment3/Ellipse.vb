@@ -6,6 +6,7 @@
 
     Public Property startN As Integer
     Public Property endN As Integer
+    Public Property thiccness As Integer
 
     Public Shared tempN As Integer
     Public Shared e() As Ellipse
@@ -14,7 +15,7 @@
     Public Shared eElmt() As Point
     Public Property eLength As Integer
 
-    Sub ellipseInit()
+    Public Shared Sub ellipseInit()
         idx = 0
         N = 0
         tempN = 0
@@ -22,10 +23,11 @@
         ReDim eElmt(-1)
     End Sub
 
-    Public Sub ellipseIdx(sN As Integer, eN As Integer)
+    Public Sub ellipseIdx(sN As Integer, eN As Integer, thicc As Integer)
         startN = sN
         endN = eN
         eLength = endN - startN
+        thiccness = thicc
     End Sub
 
     Public Shared Sub ellipseDelete(i As Integer)
@@ -61,13 +63,14 @@
         eElmt(N) = P
         N = N + 1
     End Sub
-    'help to simplify the code :D
     Sub createEllipse(xc As Double, yc As Double, a As Double, b As Double)
         Dim ells As Ellipse = New Ellipse
         Dim x = 0
         Dim y = b
         Dim a2 = a * a
         Dim b2 = b * b
+        Dim getThicc = MainWindow.ComboBox1.Text
+        Dim thicc As Integer = Convert.ToInt32(getThicc)
         tempN = N
         ReDim Preserve e(idx)
         If MainWindow.DotCheck.Checked = True Then
@@ -82,6 +85,7 @@
                 End If
                 setEllipsePixels(xc, yc, x, y)
                 storeEllipse(xc, yc, x, y)
+                Miscellanous.thiccEllipse(xc, yc, x, y, thicc)
             End While
 
             Dim d2 = (b2 * ((2 * x) + 1) * ((2 * x) + 1)) + (4 * a2 * ((y - 1) * (y - 1))) - (4 * a2 * b2)
@@ -95,6 +99,7 @@
                 End If
                 setEllipsePixels(xc, yc, x, y)
                 storeEllipse(xc, yc, x, y)
+                Miscellanous.thiccEllipse(xc, yc, x, y, thicc)
             End While
         ElseIf MainWindow.DotCheck.Checked = False Then
             Dim d1 = (4 * b2) - (4 * a2 * b) + a2
@@ -108,6 +113,7 @@
                 End If
                 setEllipsePixels(xc, yc, x, y)
                 storeEllipse(xc, yc, x, y)
+                Miscellanous.thiccEllipse(xc, yc, x, y, thicc)
             End While
 
             Dim d2 = (b2 * ((2 * x) + 1) * ((2 * x) + 1)) + (4 * a2 * ((y - 1) * (y - 1))) - (4 * a2 * b2)
@@ -121,10 +127,11 @@
                 End If
                 setEllipsePixels(xc, yc, x, y)
                 storeEllipse(xc, yc, x, y)
+                Miscellanous.thiccEllipse(xc, yc, x, y, thicc)
             End While
         End If
         MainWindow.PictureBox1.Image = MainWindow.canvas
-        ells.ellipseIdx(tempN, N)
+        ells.ellipseIdx(tempN, N, getThicc)
         e(idx) = ells
         idx = idx + 1
     End Sub

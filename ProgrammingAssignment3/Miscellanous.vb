@@ -9,12 +9,61 @@
             Next
         Next
         MainWindow.PictureBox1.Image = MainWindow.canvas
+        Circle.circleInit()
+        Ellipse.ellipseInit()
+        MainWindow.ListBox1.Items.Clear()
+        MainWindow.ListBox2.Items.Clear()
     End Sub
 
     Public Shared Sub refreshPoints()
         clearCanvas()
         refreshCircle()
         refreshEllipse()
+    End Sub
+
+    Public Shared Sub thiccCircle(xc As Double, yc As Double, x As Double, y As Double, thiccness As Integer)
+        If thiccness = 1 Then
+            thiccness = 0
+        Else
+            thiccness = thiccness - 2
+            For t = 1 To thiccness
+                MainWindow.canvas.SetPixel(xc + x, yc + y - t, color)
+                MainWindow.canvas.SetPixel(xc - x, yc + y - t, color)
+                MainWindow.canvas.SetPixel(xc + x, yc - y - t, color)
+                MainWindow.canvas.SetPixel(xc - x, yc - y - t, color)
+                MainWindow.canvas.SetPixel(xc + y - t, yc + x, color)
+                MainWindow.canvas.SetPixel(xc - y - t, yc + x, color)
+                MainWindow.canvas.SetPixel(xc + y - t, yc - x, color)
+                MainWindow.canvas.SetPixel(xc - y - t, yc - x, color)
+                MainWindow.canvas.SetPixel(xc + x, yc + y + t, color)
+                MainWindow.canvas.SetPixel(xc - x, yc + y + t, color)
+                MainWindow.canvas.SetPixel(xc + x, yc - y + t, color)
+                MainWindow.canvas.SetPixel(xc - x, yc - y + t, color)
+                MainWindow.canvas.SetPixel(xc + y + t, yc + x, color)
+                MainWindow.canvas.SetPixel(xc - y + t, yc + x, color)
+                MainWindow.canvas.SetPixel(xc + y + t, yc - x, color)
+                MainWindow.canvas.SetPixel(xc - y + t, yc - x, color)
+            Next
+
+        End If
+    End Sub
+
+    Public Shared Sub thiccEllipse(xc As Double, yc As Double, x As Double, y As Double, thiccness As Integer)
+        If thiccness = 1 Then
+            thiccness = 0
+        Else
+            thiccness = thiccness - 2
+            For t = 1 To thiccness
+                MainWindow.canvas.SetPixel(xc + x, yc + y + t, color)
+                MainWindow.canvas.SetPixel(xc - x, yc + y + t, color)
+                MainWindow.canvas.SetPixel(xc + x, yc - y + t, color)
+                MainWindow.canvas.SetPixel(xc - x, yc - y + t, color)
+                MainWindow.canvas.SetPixel(xc + x, yc + y - t, color)
+                MainWindow.canvas.SetPixel(xc - x, yc + y - t, color)
+                MainWindow.canvas.SetPixel(xc + x, yc - y - t, color)
+                MainWindow.canvas.SetPixel(xc - x, yc - y - t, color)
+            Next
+        End If
     End Sub
 
     Public Shared Sub refreshCircle()
@@ -67,10 +116,10 @@
     End Sub
 
     Public Shared Sub setPixelss(xc As Double, yc As Double, x As Double, y As Double)
-        MainWindow.canvas.SetPixel(xc + x - 1, yc + y, color)
-        MainWindow.canvas.SetPixel(xc - x + 1, yc + y, color)
-        MainWindow.canvas.SetPixel(xc + x - 1, yc - y, color)
-        MainWindow.canvas.SetPixel(xc - x + 1, yc - y, color)
+        MainWindow.canvas.SetPixel(xc + x, yc + y, color)
+        MainWindow.canvas.SetPixel(xc - x, yc + y, color)
+        MainWindow.canvas.SetPixel(xc + x, yc - y, color)
+        MainWindow.canvas.SetPixel(xc - x, yc - y, color)
     End Sub
 
     Public Shared Sub populateCombo()
@@ -78,6 +127,6 @@
             h = h + 1
             MainWindow.ComboBox1.Items.Add(h)
         Next
-        MainWindow.ComboBox1.SelectedIndex = 0
+        MainWindow.ComboBox1.SelectedText = 1
     End Sub
 End Class
